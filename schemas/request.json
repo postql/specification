@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/v1/request.json",
+  "description": "The body of a PostQL request",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v1/document.json"
+    },
+    {
+      "properties": {
+        "schema": {
+          "const": "https://postql.org/schemas/v1/request.json"
+        },
+        "data": {
+          "properties": {
+            "meta": {
+              "$ref": "https://postql.org/schemas/v1/meta.json"
+            },
+            "query": {
+              "$ref": "https://postql.org/schemas/v1/query.json"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      }
+    }
+  ]
+}

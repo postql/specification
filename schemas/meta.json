@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/v1/meta.json",
+  "description": "Metadata for the request, namespaced by schema",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v1/document.json"
+    },
+    {
+      "properties": {
+        "schema": {
+          "const": "https://postql.org/schemas/v1/meta.json"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "https://postql.org/schemas/v1/document.json"
+          }
+        }
+      }
+    }
+  ]
+}

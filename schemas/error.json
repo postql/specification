@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/v1/error.json",
+  "description": "A query error result",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v1/document.json"
+    },
+    {
+      "properties": {
+        "schema": {
+          "const": "https://postql.org/schemas/v1/error.json"
+        },
+        "data": {
+          "properties": {
+            "code": {
+              "description": "A code to uniquely describe the type of error",
+              "type": "string"
+            },
+            "message": {
+              "description": "A description of the error that occurred",
+              "type": "string"
+            },
+            "errors": {
+              "description": "Additional nested errors",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "description": "A code to uniquely describe the type of error",
+                    "type": "string"
+                  },
+                  "params": {
+                    "description": "Error type-specific data",
+                    "type": "object",
+                    "patternProperties": {
+                      "": {}
+                    },
+                    "additionalProperties": false
+                  },
+                  "message": {
+                    "description": "A description of the error that occurred",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "code",
+                  "message"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ]
+        }
+      }
+    }
+  ]
+}
