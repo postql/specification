@@ -1,15 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://postql.org/schemas/v1/rows.json",
+  "$id": "https://postql.org/schemas/v0/rows.json",
   "description": "The resultant rows of a successful PostQL query",
   "allOf": [
     {
-      "$ref": "https://postql.org/schemas/v1/document.json"
+      "$ref": "https://postql.org/schemas/v0/document.json"
     },
     {
       "properties": {
         "schema": {
-          "const": "https://postql.org/schemas/v1/rows.json"
+          "const": "https://postql.org/schemas/v0/rows.json"
         },
         "data": {
           "type": "array",

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://postql.org/schemas/v1/document.json",
+  "$id": "https://postql.org/schemas/v0/document.json",
   "description": "A JSON document which declares its JSON schema",
   "type": "object",
   "properties": {

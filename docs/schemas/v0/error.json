@@ -1,15 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://postql.org/schemas/v1/error.json",
+  "$id": "https://postql.org/schemas/v0/error.json",
   "description": "A query error result",
   "allOf": [
     {
-      "$ref": "https://postql.org/schemas/v1/document.json"
+      "$ref": "https://postql.org/schemas/v0/document.json"
     },
     {
       "properties": {
         "schema": {
-          "const": "https://postql.org/schemas/v1/error.json"
+          "const": "https://postql.org/schemas/v0/error.json"
         },
         "data": {
           "properties": {

@@ -1,23 +1,23 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://postql.org/schemas/v1/response.json",
+  "$id": "https://postql.org/schemas/v0/response.json",
   "description": "The body of a PostQL request response",
   "allOf": [
     {
-      "$ref": "https://postql.org/schemas/v1/document.json"
+      "$ref": "https://postql.org/schemas/v0/document.json"
     },
     {
       "properties": {
         "schema": {
-          "const": "https://postql.org/schemas/v1/response.json"
+          "const": "https://postql.org/schemas/v0/response.json"
         },
         "data": {
           "properties": {
             "meta": {
-              "$ref": "https://postql.org/schemas/v1/meta.json"
+              "$ref": "https://postql.org/schemas/v0/meta.json"
             },
             "reply": {
-              "$ref": "https://postql.org/schemas/v1/reply.json"
+              "$ref": "https://postql.org/schemas/v0/reply.json"
             }
           },
           "required": [
