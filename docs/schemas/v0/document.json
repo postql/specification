@@ -1,23 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://postql.org/schemas/v0/document.json",
-  "description": "A JSON document which declares its JSON schema",
+  "description": "The interface of a document that identifies its schema",
   "type": "object",
   "properties": {
-    "schema": {
+    "$schema": {
       "description": "The URI of the schema this document conforms to",
       "type": "string",
       "format": "uri"
-    },
-    "data": {
-      "description": "The content of the document",
-      "type": "object",
-      "additionalProperties": false
     }
   },
   "required": [
-    "schema",
-    "data"
-  ],
-  "additionalProperties": false
+    "$schema"
+  ]
 }

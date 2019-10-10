@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/postql/v0/query.json",
+  "description": "A PostQL query set",
+  "type": "object",
+  "properties": {
+    "options": {
+      "description": "Options that apply to all queries",
+      "type": "object",
+      "properties": {
+        "transactional": {
+          "description": "Whether all queries must be successful for any to be executed",
+          "type": "boolean"
+        }
+      }
+    },
+    "queries": {
+      "type": "array",
+      "items": {
+        "description": "A PostQL parameterized query",
+        "type": "object",
+        "properties": {
+          "query": {
+            "description": "A PostQL query string",
+            "type": "string"
+          },
+          "params": {
+            "description": "Values for the parameter placeholders in the query",
+            "type": "object",
+            "patternProperties": {
+              "^[A-Za-z][A-Za-z_]*(?<!_)$": {
+                "description": "Parameter value"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "queries"
+  ]
+}

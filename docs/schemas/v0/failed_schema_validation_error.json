@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/v0/failed_schema_validation_error.json",
+  "description": "An error result due to query parameters failing schema validation",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v0/error.json"
+    },
+    {
+      "properties": {
+        "code": {
+          "const": "failed_schema_validation"
+        },
+        "message": {
+          "const": "Request query failed schema validation"
+        },
+        "data": {
+          "description": "Schema violations",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "rule": {
+                "description": "A unique keyword which describes the type of validation error",
+                "type": "string"
+              },
+              "message": {
+                "description": "A description of the validation error",
+                "type": "string"
+              },
+              "path": {
+                "description": "The path in the parameter object that violates the schema",
+                "type": "string",
+                "format": "json-pointer"
+              },
+              "schema": {
+                "description": "The parent schema where the error occurred",
+                "type": "object"
+              },
+              "schema_uri": {
+                "description": "The URI to the JSON schema with the path to the failed constraint",
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "params",
+              "path",
+              "schema"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

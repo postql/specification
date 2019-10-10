@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/postql/v0/reply.json",
+  "description": "A set of result documents for a batch of PostQL queries",
+  "type": "object",
+  "properties": {
+    "data": {
+      "description": "An array with a result object for each query in the request",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "description": "Whether the query result was a success",
+            "type": "string"
+          },
+          "aliases": {
+            "description": "A map of model name aliases to their full identifiers",
+            "type": "object",
+            "patternProperties": {
+              "^[a-z][a-z_]*(?<!_)$": {
+                "description": "The full identifier of the queried model",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "anyOf": [
+          {
+            "description": "A successful query result",
+            "properties": {
+              "outcome": {
+                "const": "success"
+              },
+              "rows": {
+                "description": "The resultant map of model name aliases to query results of a successful PostQL query",
+                "type": "array",
+                "items": {
+                  "description": "A map of model name aliases to query results",
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-z][a-z_]*(?<!_)$": {
+                      "type": "object",
+                      "description": "A map of attribute names or aliases to the result",
+                      "patternProperties": {
+                        "^[a-z][a-z_]*(?<!_)$": {
+                          "description": "The resultant value"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "rows"
+            ]
+          },
+          {
+            "description": "A failed query result",
+            "properties": {
+              "outcome": {
+                "const": "failure"
+              },
+              "error": {
+                "$ref": "https://postql.org/schemas/v0/error.json"
+              }
+            },
+            "required": [
+              "error"
+            ]
+          }
+        ],
+        "required": [
+          "outcome",
+          "aliases"
+        ]
+      }
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

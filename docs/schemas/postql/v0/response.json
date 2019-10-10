@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/postql/v0/response.json",
+  "description": "The response body of a PostQL query request",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v0/response.json"
+    },
+    {
+      "properties": {
+        "$schema": {
+          "const": "https://postql.org/schemas/postql/v0/response.json"
+        },
+        "reply": {
+          "$ref": "https://postql.org/schemas/postql/v0/reply.json"
+        }
+      }
+    }
+  ]
+}
