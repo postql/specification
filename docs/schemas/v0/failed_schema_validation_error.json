@@ -8,6 +8,9 @@
     },
     {
       "properties": {
+        "$schema": {
+          "const": "https://postql.org/schemas/v0/failed_schema_validation_error.json"
+        },
         "code": {
           "const": "failed_schema_validation"
         },

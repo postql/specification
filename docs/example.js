@@ -50,15 +50,7 @@ const response = {
   "reply": {
     "data": [
       // Since this was nontransactional, there may be a mixed
-      // outcome per query.
-      // For a transactional query, the first query which failed
-      // validation will have "outcome": "failure" and error details.
-      // Subsequent replies will have "outcome": "failure" and "error"
-      // will be
-      // {
-      //   "code": "previous_statement_failed",
-      //   "message": "Previous statement in request transaction failed"
-      // }
+      // outcome per query
       {
         "outcome": "success",
         "aliases": {
@@ -79,6 +71,7 @@ const response = {
           "u": "user"
         },
         "error": {
+          "$schema": "https://postql.org/schemas/v0/failed_schema_validation_error.json",
           "code": "failed_schema_validation",
           "message": "Request query failed schema validation",
           "data": [

@@ -7,7 +7,16 @@
     "data": {
       "type": "array",
       "items": {
-        "$ref": "https://postql.org/schemas/v0/document.json"
+        "allOf": [
+          {
+            "$ref": "https://postql.org/schemas/v0/document.json"
+          },
+          {
+            "required": [
+              "$schema"
+            ]
+          }
+        ]
       }
     }
   },

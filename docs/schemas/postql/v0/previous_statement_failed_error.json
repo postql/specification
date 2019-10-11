@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://postql.org/schemas/v0/failed_schema_validation_error.json",
+  "description": "An error result due to query parameters failing schema validation",
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v0/error.json"
+    },
+    {
+      "properties": {
+        "$schema": {
+          "const": "https://postql.org/schemas/postql/v0/previous_statement_failed_error.json"
+        },
+        "code": {
+          "const": "previous_statement_failed"
+        },
+        "message": {
+          "const": "Previous statement in request transaction failed"
+        }
+      }
+    }
+  ]
+}

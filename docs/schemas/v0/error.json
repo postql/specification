@@ -2,22 +2,28 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://postql.org/schemas/v0/error.json",
   "description": "A generic base schema for error objects",
-  "type": "object",
-  "properties": {
-    "code": {
-      "description": "A code to uniquely describe the type of error",
-      "type": "string"
+  "allOf": [
+    {
+      "$ref": "https://postql.org/schemas/v0/document.json"
     },
-    "message": {
-      "description": "A description of the error that occurred",
-      "type": "string"
-    },
-    "data": {
-      "description": "Additional specific error data"
+    {
+      "properties": {
+        "code": {
+          "description": "A code to uniquely describe the type of error",
+          "type": "string"
+        },
+        "message": {
+          "description": "A description of the error that occurred",
+          "type": "string"
+        },
+        "data": {
+          "description": "Additional specific error data"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
     }
-  },
-  "required": [
-    "code",
-    "message"
   ]
 }
